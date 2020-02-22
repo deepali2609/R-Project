@@ -1,0 +1,37 @@
+my.function.correlation=function(x,y){
+s.corr=0
+n=length(x)
+d=NULL
+D=NULL
+dx=NULL
+dy=NULL
+
+dx=rank(x)
+dy=rank(y)
+d=(dx-dy)
+D=sum(d**2)
+
+
+s.corr=1-((6*sum(D))/(n*(n**2)-1))
+return(s.corr)
+}
+
+y=read.csv("MSc_Ranks.csv")
+x=y[,3:14]
+x
+
+mat=matrix(x,nrow=12,ncol=12)
+for(i in 1:12){
+  temp=NULL
+  for(j in 1:12){
+     temp=c(temp,my.function.correlation(x[i,],x[j,])
+}
+     mat[i,]=temp
+
+}
+    
+
+
+
+
+
